@@ -2,6 +2,8 @@
 title: 别再用垃圾ngrok进行内网穿透了
 date: 2023-01-16
 duration: 6min
+category:
+  - Linux
 ---
 
 最近在接触微信小程序支付的功能，然后要接收微信服务器发来的支付回调，所以微信后台要设置消息推送的配置，结果让我看到了这个很难受的提示
@@ -31,7 +33,7 @@ duration: 6min
 
 4. 在服务器上打开`frps.ini`，修改配置如下
 
-```
+```bash
 [common]
 # frps服务器端口，防火墙要打开
 bind_port = 7000
@@ -42,7 +44,7 @@ token = 1234567820222022ccc
 5. 服务器启动`./frps -c ./frps.ini`
 6. 本地打开`frpc.ini`，配置如下
 
-```
+```bash
 [common]
 #  服务器公网 ip
 server_addr = xxxx.xxxx.xxxx.xxxx

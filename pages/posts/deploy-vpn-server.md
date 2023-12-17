@@ -2,6 +2,9 @@
 title: 搭建vpn服务器
 date: 2023-07-27
 duration: 10min
+category:
+  - Docker
+  - Linux
 ---
 
 ### VPN 原理

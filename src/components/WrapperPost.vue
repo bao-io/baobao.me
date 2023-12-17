@@ -1,12 +1,7 @@
 <script setup lang="ts">
 import { formatDate } from "~/logics";
 
-const { frontmatter } = defineProps({
-  frontmatter: {
-    type: Object,
-    required: true,
-  },
-});
+const { frontmatter } = defineProps<{ frontmatter: any; category?: string }>();
 
 const router = useRouter();
 const route = useRoute();

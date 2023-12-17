@@ -2,6 +2,8 @@
 title: 小白如何开发一个属于自己的网站？
 date: 2022-11-27
 duration: 3min
+category:
+  - Nginx
 ---
 
 要想全世界的人访问你的网站，你需要具备：

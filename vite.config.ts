@@ -35,7 +35,7 @@ export default defineConfig({
       },
     }),
     Markdown({
-      wrapperComponent: (id) => "WrapperPost",
+      wrapperComponent: "WrapperPost",
       wrapperClasses: "prose m-auto slide-enter-content",
       headEnabled: true,
       exportFrontmatter: false,
@@ -59,6 +59,7 @@ export default defineConfig({
       },
     }),
     AutoImport({
+      dts: true,
       imports: ["vue", "vue-router", "@vueuse/core"],
     }),
     Pages({
@@ -67,7 +68,7 @@ export default defineConfig({
       extendRoute(route) {
         const path = resolve(__dirname, route.component.slice(1));
 
-        if (!path.includes("projects.md") && path.endsWith(".md")) {
+        if (path.endsWith(".md")) {
           const md = fs.readFileSync(path, "utf-8");
           const { data } = matter(md);
           route.meta = Object.assign(route.meta || {}, { frontmatter: data });

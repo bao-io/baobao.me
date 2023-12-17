@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 import { formatDate } from "~/logics";
-import type { Post } from "~/types";
 
 const props = defineProps<{
   type?: string;
@@ -9,30 +8,37 @@ const props = defineProps<{
   extra?: Post[];
 }>();
 
+const route = useRoute();
 const router = useRouter();
-const routes: Post[] = router
-  .getRoutes()
-  .filter(
-    (i) =>
-      i.path.startsWith("/posts") &&
-      i.meta.frontmatter.date &&
-      !i.meta.frontmatter.draft
-  )
-  .filter((i) => !i.path.endsWith(".html"))
-  .map((i) => ({
-    path: i.meta.frontmatter.redirect || i.path,
-    title: i.meta.frontmatter.title,
-    date: i.meta.frontmatter.date,
-    lang: i.meta.frontmatter.lang,
-    duration: i.meta.frontmatter.duration,
-    recording: i.meta.frontmatter.recording,
-    upcoming: i.meta.frontmatter.upcoming,
-    redirect: i.meta.frontmatter.redirect,
-    place: i.meta.frontmatter.place,
-  }));
-
+const category = computed(() => route.params.category as string);
+const routes = computed<Post[]>(() =>
+  router
+    .getRoutes()
+    .filter(
+      (i) =>
+        i.path.startsWith("/posts") &&
+        i.meta.frontmatter.date &&
+        !i.meta.frontmatter.draft
+    )
+    .filter((i) => !i.path.endsWith(".html"))
+    .filter(
+      (i) =>
+        !category.value || i.meta.frontmatter.category?.includes(category.value)
+    )
+    .map((i) => ({
+      path: i.meta.frontmatter.redirect || i.path,
+      title: i.meta.frontmatter.title,
+      date: i.meta.frontmatter.date,
+      lang: i.meta.frontmatter.lang,
+      duration: i.meta.frontmatter.duration,
+      recording: i.meta.frontmatter.recording,
+      upcoming: i.meta.frontmatter.upcoming,
+      redirect: i.meta.frontmatter.redirect,
+      place: i.meta.frontmatter.place,
+    }))
+);
 const posts = computed(() =>
-  [...(props.posts || routes), ...(props.extra || [])].sort(
+  [...(props.posts || routes.value), ...(props.extra || [])].sort(
     (a, b) => +new Date(b.date) - +new Date(a.date)
   )
 );

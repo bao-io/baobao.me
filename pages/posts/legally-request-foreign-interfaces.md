@@ -2,6 +2,8 @@
 title: 如何合法的请求国外接口
 date: 2023-07-26
 duration: 5min
+category:
+  - Others
 ---
 
 ## 大家共同的顾虑

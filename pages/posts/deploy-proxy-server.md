@@ -2,6 +2,9 @@
 title: 搭建代理服务器
 date: 2023-07-16
 duration: 10min
+category:
+  - JavaScript
+  - Nginx
 ---
 
 ## 手动搭建代理服务器

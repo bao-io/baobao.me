@@ -2,6 +2,8 @@
 title: 你对域名知多少
 date: 2022-11-20
 duration: 5min
+category:
+  - Others
 ---
 
 ### Domain 域名

@@ -1,7 +1,11 @@
 ---
-title: mongodb集群搭建
+title: MongoDB集群搭建
 date: 2023-01-24
 duration: 10min
+category:
+  - MongoDB
+  - Docker
+  - JavaScript
 ---
 
 最近开发遇到一个问题，也就是工作中后端会常常遇到的一个问题，如何保证事务的**原子性**。由于涉及到许多操作，例如用 docker 搭建 mongo 集群、mongo 配置，特此记录一下。
