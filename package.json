@@ -1,0 +1,35 @@
+{
+  "type": "module",
+  "scripts": {
+    "dev": "vite --open --port 1024",
+    "build": "vite-ssg build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^20.10.4",
+    "@types/nprogress": "^0.2.3",
+    "@unhead/vue": "^1.8.9",
+    "@unocss/reset": "^0.58.0",
+    "@vitejs/plugin-vue": "^4.5.2",
+    "@vueuse/core": "^10.7.0",
+    "fs-extra": "^11.2.0",
+    "gray-matter": "^4.0.3",
+    "markdown-it-ruby": "^0.1.1",
+    "markdown-it-shikiji": "^0.9.9",
+    "unocss": "^0.58.0",
+    "unplugin-auto-import": "^0.17.2",
+    "unplugin-vue-components": "^0.26.0",
+    "unplugin-vue-markdown": "^0.25.2",
+    "vite": "^5.0.10",
+    "vite-plugin-pages": "^0.32.0",
+    "vite-ssg": "^0.23.5"
+  },
+  "dependencies": {
+    "@iconify/json": "^2.2.158",
+    "dayjs": "^1.11.10",
+    "nprogress": "^0.2.0",
+    "vue": "^3.3.12",
+    "vue-router": "^4.2.5"
+  }
+}
