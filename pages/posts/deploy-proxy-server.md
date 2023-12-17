@@ -1,10 +1,6 @@
 ---
 title: 搭建代理服务器
 date: 2023-07-16
-tags:
-  - js
-  - pm2
-  - nginx
 duration: 10min
 ---
 

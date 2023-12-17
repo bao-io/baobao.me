@@ -29,7 +29,7 @@ export default defineConfig({
     UnoCSS(),
     Vue({
       include: [/\.vue$/, /\.md$/],
-      reactivityTransform: true,
+      // reactivityTransform: true,
       script: {
         defineModel: true,
       },
@@ -59,7 +59,6 @@ export default defineConfig({
       },
     }),
     AutoImport({
-      dts: true,
       imports: ["vue", "vue-router", "@vueuse/core"],
     }),
     Pages({

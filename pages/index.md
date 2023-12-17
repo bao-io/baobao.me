@@ -2,6 +2,7 @@
 title: BaoBao
 date: 2023-10-02
 plum: true
+duration: 1min
 ---
 
 Hi！我是**BaoBao**。 一位热衷于**Frontend Development**的年轻小伙。01 年生，23 届本科毕业，已经在前端领域中探索已有将近三年的时间，个人从事全栈应用开发，但偏向于专研前端新技术，比如框架的底层原理、打包工具的构建。

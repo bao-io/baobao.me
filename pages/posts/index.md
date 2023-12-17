@@ -1,6 +1,7 @@
 ---
 title: Blogs — BaoBao
-layout: "custom"
+layout: ""
+plum: true
 ---
 
 <ListPosts />

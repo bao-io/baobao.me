@@ -1,6 +1,7 @@
 ---
 title: 搭建React Native环境记录
 date: 2023-10-09
+duration: 10min
 ---
 
 早在一年前就已经学会 React 的我，那时候也尝试过用 React 写 App，但是那时候由于环境的原因一直导致项目启动不起来，后来就放弃了。

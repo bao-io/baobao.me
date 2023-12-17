@@ -44,7 +44,7 @@ const { y: scroll } = useWindowScroll();
           <div i-ri-article-line />
         </RouterLink>
         <a href="https://chat.fakeopenai.cn" target="_blank" title="ChatGPT">
-          <div i-ri-chat-1-line />
+          <div i-ri-openai-fill />
         </a>
         <a href="https://github.com/bao-io" target="_blank" title="GitHub">
           <div i-uil-github-alt />

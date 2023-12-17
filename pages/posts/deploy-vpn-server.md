@@ -1,6 +1,7 @@
 ---
 title: 搭建vpn服务器
 date: 2023-07-27
+duration: 10min
 ---
 
 ### VPN 原理
