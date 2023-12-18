@@ -38,12 +38,6 @@ export default defineConfig({
     }),
     presetAttributify(),
     presetUno(),
-    presetWebFonts({
-      fonts: {
-        sans: "Inter:400,600,800",
-        mono: "DM Mono:400,600",
-      },
-    }),
   ],
   transformers: [transformerDirectives()],
   safelist: ["i-ri-menu-2-fill"],

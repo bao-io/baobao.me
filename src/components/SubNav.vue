@@ -25,8 +25,10 @@ const categorys = Array.from(
 </script>
 
 <template>
-  <div class="prose m-auto mb-8 select-none animate-none! op100!">
-    <div mb-0 flex="~ col gap-1 sm:row sm:gap-3 wrap" text-3xl>
+  <div
+    class="prose m-auto mb-8 select-none animate-none! op100! block md:fixed top-50 right-10"
+  >
+    <div mb-0 flex="~ col gap-1 sm:gap-3 wrap md:items-end" text-3xl md:text-xl>
       <RouterLink
         to="/posts"
         class="!border-none"
