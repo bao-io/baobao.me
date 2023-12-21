@@ -25,9 +25,15 @@ devDependencies:
   '@antfu/eslint-config':
     specifier: ^2.4.6
     version: 2.4.6(@vue/compiler-sfc@3.3.12)(eslint-plugin-format@0.1.0)(eslint@8.56.0)(typescript@5.3.3)
+  '@types/diacritics':
+    specifier: ^1.3.3
+    version: 1.3.3
   '@types/fs-extra':
     specifier: ^11.0.4
     version: 11.0.4
+  '@types/markdown-it-link-attributes':
+    specifier: ^3.0.4
+    version: 3.0.4
   '@types/node':
     specifier: ^20.10.4
     version: 20.10.4
@@ -46,6 +52,9 @@ devDependencies:
   '@vueuse/core':
     specifier: ^10.7.0
     version: 10.7.0(vue@3.3.12)
+  diacritics:
+    specifier: ^1.3.0
+    version: 1.3.0
   eslint-plugin-format:
     specifier: ^0.1.0
     version: 0.1.0(eslint@8.56.0)
@@ -55,12 +64,27 @@ devDependencies:
   gray-matter:
     specifier: ^4.0.3
     version: 4.0.3
+  markdown-it-anchor:
+    specifier: ^8.6.7
+    version: 8.6.7(@types/markdown-it@13.0.7)(markdown-it@13.0.2)
+  markdown-it-github-alerts:
+    specifier: ^0.1.2
+    version: 0.1.2(markdown-it@13.0.2)
+  markdown-it-link-attributes:
+    specifier: ^4.0.1
+    version: 4.0.1
   markdown-it-ruby:
     specifier: ^0.1.1
     version: 0.1.1
   markdown-it-shikiji:
     specifier: ^0.9.9
     version: 0.9.9
+  markdown-it-table-of-contents:
+    specifier: ^0.6.0
+    version: 0.6.0
+  shikiji-twoslash:
+    specifier: ^0.9.10
+    version: 0.9.10(typescript@5.3.3)
   unocss:
     specifier: ^0.58.0
     version: 0.58.0(postcss@8.4.32)(vite@5.0.10)
@@ -1093,6 +1117,10 @@ packages:
       '@types/ms': 0.7.34
     dev: true
 
+  /@types/diacritics@1.3.3:
+    resolution: {integrity: sha512-wt0tBItmBsOUVZ8+MCrkBMoVfH/EUZeTXwYSekVVYilZlGDYssREUR+sX72mHvl2IrbdCKgpYARXKh3awD2how==}
+    dev: true
+
   /@types/estree@1.0.5:
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
     dev: true
@@ -1116,6 +1144,19 @@ packages:
 
   /@types/linkify-it@3.0.5:
     resolution: {integrity: sha512-yg6E+u0/+Zjva+buc3EIb+29XEg4wltq7cSmd4Uc2EE/1nUVmxyzpX6gUXD0V8jIrG0r7YeOGVIbYRkxeooCtw==}
+    dev: true
+
+  /@types/lz-string@1.5.0:
+    resolution: {integrity: sha512-s84fKOrzqqNCAPljhVyC5TjAo6BH4jKHw9NRNFNiRUY5QSgZCmVm5XILlWbisiKl+0OcS7eWihmKGS5akc2iQw==}
+    deprecated: This is a stub types definition. lz-string provides its own type definitions, so you do not need this installed.
+    dependencies:
+      lz-string: 1.5.0
+    dev: true
+
+  /@types/markdown-it-link-attributes@3.0.4:
+    resolution: {integrity: sha512-Ky3wTFQurAF0wSfsYi+1J2yDvpZRtNBsd8CV0rwOSIgNmNX8q87FN9c9PBp+NljoQqWhJPy8eLrkQNcG86nbUQ==}
+    dependencies:
+      '@types/markdown-it': 13.0.7
     dev: true
 
   /@types/markdown-it@13.0.7:
@@ -1294,6 +1335,28 @@ packages:
     dependencies:
       '@typescript-eslint/types': 6.15.0
       eslint-visitor-keys: 3.4.3
+    dev: true
+
+  /@typescript/twoslash@3.2.4(typescript@5.3.3):
+    resolution: {integrity: sha512-/TCIOuPQaKltzUUT1qJo6mplYwjbAxkaSFvkeZD3FeFt3Ovt+HJi8xisu8rcLyDRmM3VJ0+jAx+AAICwn4Zlhw==}
+    peerDependencies:
+      typescript: '*'
+    dependencies:
+      '@types/lz-string': 1.5.0
+      '@typescript/vfs': 1.5.0
+      debug: 4.3.4
+      lz-string: 1.5.0
+      typescript: 5.3.3
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /@typescript/vfs@1.5.0:
+    resolution: {integrity: sha512-AJS307bPgbsZZ9ggCT3wwpg3VbTKMFNHfaY/uF0ahSkYYrPF2dSSKDNIDIQAHm9qJqbLvCsSJH7yN4Vs/CsMMg==}
+    dependencies:
+      debug: 4.3.4
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /@ungap/structured-clone@1.2.0:
@@ -2140,6 +2203,10 @@ packages:
 
   /destr@2.0.2:
     resolution: {integrity: sha512-65AlobnZMiCET00KaFFjUefxDX0khFA/E4myqZ7a6Sq1yZtR8+FVIvilVX66vF2uobSumxooYZChiRPCKNqhmg==}
+    dev: true
+
+  /diacritics@1.3.0:
+    resolution: {integrity: sha512-wlwEkqcsaxvPJML+rDh/2iS824jbREk6DUMUKkEaSlxdYHeS43cClJtsWglvw2RfeXGm6ohKDqsXteJ5sP5enA==}
     dev: true
 
   /dir-glob@3.0.1:
@@ -3646,11 +3713,38 @@ packages:
       yallist: 4.0.0
     dev: true
 
+  /lz-string@1.5.0:
+    resolution: {integrity: sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==}
+    hasBin: true
+    dev: true
+
   /magic-string@0.30.5:
     resolution: {integrity: sha512-7xlpfBaQaP/T6Vh8MO/EqXSW5En6INHEvEXQiuff7Gku0PWjU3uf6w/j9o7O+SpB5fOAkrI5HeoNgwjEO0pFsA==}
     engines: {node: '>=12'}
     dependencies:
       '@jridgewell/sourcemap-codec': 1.4.15
+
+  /markdown-it-anchor@8.6.7(@types/markdown-it@13.0.7)(markdown-it@13.0.2):
+    resolution: {integrity: sha512-FlCHFwNnutLgVTflOYHPW2pPcl2AACqVzExlkGQNsi4CJgqOHN7YTgDd4LuhgN1BFO3TS0vLAruV1Td6dwWPJA==}
+    peerDependencies:
+      '@types/markdown-it': '*'
+      markdown-it: '*'
+    dependencies:
+      '@types/markdown-it': 13.0.7
+      markdown-it: 13.0.2
+    dev: true
+
+  /markdown-it-github-alerts@0.1.2(markdown-it@13.0.2):
+    resolution: {integrity: sha512-jtCrfFxXR6c/bNRBvWkoqUquEDdIF9q7/gNZjP47W96kaIiBMiYHbpf468IPeZJB5BVRls6+IXGchhQSTxy0DQ==}
+    peerDependencies:
+      markdown-it: ^13.0.0
+    dependencies:
+      markdown-it: 13.0.2
+    dev: true
+
+  /markdown-it-link-attributes@4.0.1:
+    resolution: {integrity: sha512-pg5OK0jPLg62H4k7M9mRJLT61gUp9nvG0XveKYHMOOluASo9OEF13WlXrpAp2aj35LbedAy3QOCgQCw0tkLKAQ==}
+    dev: true
 
   /markdown-it-ruby@0.1.1:
     resolution: {integrity: sha512-ct8t/Drt7scv20VdaQtOhpBOC2SDICaW8E/WQS8kY2eUdu0eoDwW8ugXcCy8Vku4Y5CuA5qrewlHpwaFsJxbpQ==}
@@ -3661,6 +3755,11 @@ packages:
     dependencies:
       markdown-it: 14.0.0
       shikiji: 0.9.9
+    dev: true
+
+  /markdown-it-table-of-contents@0.6.0:
+    resolution: {integrity: sha512-jHvEjZVEibyW97zEYg19mZCIXO16lHbvRaPDkEuOfMPBmzlI7cYczMZLMfUvwkhdOVQpIxu3gx6mgaw46KsNsQ==}
+    engines: {node: '>6.4.0'}
     dev: true
 
   /markdown-it@13.0.2:
@@ -4349,8 +4448,22 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /shikiji-core@0.9.10:
+    resolution: {integrity: sha512-s+aC66Fh343wpm7VyQTg+htdHM/tUb8R+yxdAdUpCtKkRWbSBIpqQ3xTSNjbCTnGv10xsT164SW0r1VV1N6ToA==}
+    dev: true
+
   /shikiji-core@0.9.9:
     resolution: {integrity: sha512-qu5Qq7Co6JIMY312J9Ek6WYjXieeyJT/fIqmkcjF4MdnMNlUnhSqPo8/42g5UdPgdyTCwijS7Nhg8DfLSLodkg==}
+    dev: true
+
+  /shikiji-twoslash@0.9.10(typescript@5.3.3):
+    resolution: {integrity: sha512-iXJYnkzpfSLEKanUqI1eqOvTdhiUbEbv1tFVxii6kkJTQmSs40VgTNY1wZFu6DsP4DRDJer4HeUI/RGtOpIApA==}
+    dependencies:
+      '@typescript/twoslash': 3.2.4(typescript@5.3.3)
+      shikiji-core: 0.9.10
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
     dev: true
 
   /shikiji@0.9.9:

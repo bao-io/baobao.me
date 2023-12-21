@@ -9,8 +9,15 @@ import { resolve } from "node:path";
 import fs from "fs-extra";
 import matter from "gray-matter";
 import MarkdownItShikiji from "markdown-it-shikiji";
+import anchor from 'markdown-it-anchor'
+import LinkAttributes from 'markdown-it-link-attributes'
+import GitHubAlerts from 'markdown-it-github-alerts'
+import { rendererRich, transformerTwoSlash } from 'shikiji-twoslash'
 //@ts-ignore
 import markdownItRuby from "markdown-it-ruby";
+//@ts-ignore
+import TOC from 'markdown-it-table-of-contents'
+import { slugify } from './scripts/slugify'
 
 export default defineConfig({
   optimizeDeps: {
@@ -53,9 +60,37 @@ export default defineConfig({
             },
             defaultColor: false,
             cssVariablePrefix: "--s-",
-            transformers: [],
+            transformers: [
+              transformerTwoSlash({
+                explicitTrigger: true,
+                renderer: rendererRich(),
+              }),
+            ],
           })
-        ).use(markdownItRuby);
+        )
+        md.use(anchor, {
+          slugify,
+          permalink: anchor.permalink.linkInsideHeader({
+            symbol: '#',
+            renderAttrs: () => ({ 'aria-hidden': 'true' }),
+          }),
+        })
+
+        md.use(LinkAttributes, {
+          matcher: (link: string) => /^https?:\/\//.test(link),
+          attrs: {
+            target: '_blank',
+            rel: 'noopener',
+          },
+        })
+
+        md.use(TOC, {
+          includeLevel: [1, 2, 3, 4],
+          slugify,
+          containerHeaderHtml: '<div class="table-of-contents-anchor"><div class="i-ri-menu-2-fill" /></div>',
+        })
+        md.use(markdownItRuby)
+        md.use(GitHubAlerts);
       },
     }),
     AutoImport({

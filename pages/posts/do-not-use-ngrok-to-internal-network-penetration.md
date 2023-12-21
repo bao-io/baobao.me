@@ -35,10 +35,10 @@ category:
 
 ```bash
 [common]
-# frps服务器端口，防火墙要打开
-bind_port = 7000
-# 验证客户端连接
-token = 1234567820222022ccc
+#frps服务器端口，防火墙要打开
+bind_port=7000
+#验证客户端连接
+token=1234567820222022ccc
 ```
 
 5. 服务器启动`./frps -c ./frps.ini`
@@ -46,22 +46,22 @@ token = 1234567820222022ccc
 
 ```bash
 [common]
-#  服务器公网 ip
-server_addr = xxxx.xxxx.xxxx.xxxx
-#  服务器 frps 端口
-server_port = 7000
-#  服务器要验证客户端的 token
-token = 1234567820222022ccc
+#服务器公网 ip
+server_addr=xxxx.xxxx.xxxx.xxxx
+#服务器 frps 端口
+server_port=7000
+#服务器要验证客户端的 token
+token=1234567820222022ccc
 
 [ssh]
-type = tcp
-local_ip = 127.0.0.1
-#  本地服务端口
-local_port = 9000
-#  通过服务器访问本地服务的端口，防火墙要开
-remote_port = 7001
-#  自定义域名
-# custom_domains = xxxxxx
+type=tcp
+local_ip=127.0.0.1
+#本地服务端口
+local_port=9000
+#通过服务器访问本地服务的端口，防火墙要开
+remote_port=7001
+#自定义域名
+#custom_domains=xxxxxx
 ```
 
 7.  本地启动`./frpc -c ./frpc.ini`
