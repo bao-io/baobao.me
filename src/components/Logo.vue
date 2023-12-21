@@ -23,9 +23,11 @@
 </template>
 
 <style scoped>
-path {
-  animation: none !important;
-  stroke-dasharray: unset !important;
+@media (prefers-reduced-motion) {
+  path {
+    animation: none !important;
+    stroke-dasharray: unset !important;
+  }
 }
 @keyframes grow1 {
   0% {
