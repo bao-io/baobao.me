@@ -15,6 +15,7 @@ import App from "./App.vue";
 import autoRoutes from "pages-generated";
 import dayjs from "dayjs";
 import LocalizedFormat from "dayjs/plugin/localizedFormat.js";
+import { setupRouterScroller } from 'vue-router-better-scroller'
 
 const routes = autoRoutes.map((i) => {
   return {
@@ -26,6 +27,21 @@ const routes = autoRoutes.map((i) => {
 export const createApp = ViteSSG(App, { routes }, ({ router, isClient }) => {
   dayjs.extend(LocalizedFormat);
   if (isClient) {
+    const html = document.querySelector('html')!
+    setupRouterScroller(router, {
+      selectors: {
+        html(ctx) {
+          // only do the sliding transition when the scroll position is not 0
+          if (ctx.savedPosition?.top)
+            html.classList.add('no-sliding')
+          else
+            html.classList.remove('no-sliding')
+          return true
+        },
+      },
+      behavior: 'auto',
+    })
+
     router.beforeEach(() => {
       NProgress.start();
     });
