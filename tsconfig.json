@@ -12,6 +12,7 @@
     "resolveJsonModule": true,
     "types": ["vite/client", "vite-plugin-pages/client"],
     "strict": true,
+    "noEmit": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true

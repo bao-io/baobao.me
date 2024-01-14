@@ -3,15 +3,14 @@ import {
   presetAttributify,
   presetIcons,
   presetUno,
-  presetWebFonts,
   transformerDirectives,
-} from "unocss";
+} from 'unocss'
 
 export default defineConfig({
   shortcuts: [
     {
-      "bg-base": "bg-white dark:bg-black",
-      "border-base": "border-[#8884]",
+      'bg-base': 'bg-white dark:bg-black',
+      'border-base': 'border-[#8884]',
     },
     [
       /^btn-(\w+)$/,
@@ -23,22 +22,22 @@ export default defineConfig({
     [
       /^slide-enter-(\d+)$/,
       ([_, n]) => ({
-        "--enter-stage": n,
+        '--enter-stage': n,
       }),
     ],
   ],
   presets: [
     presetIcons({
       extraProperties: {
-        display: "inline-block",
-        height: "1.2em",
-        width: "1.2em",
-        "vertical-align": "text-bottom",
+        'display': 'inline-block',
+        'height': '1.2em',
+        'width': '1.2em',
+        'vertical-align': 'text-bottom',
       },
     }),
     presetAttributify(),
     presetUno(),
   ],
   transformers: [transformerDirectives()],
-  safelist: ["i-ri-menu-2-fill"],
-});
+  safelist: ['i-ri-menu-2-fill'],
+})

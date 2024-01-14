@@ -2,17 +2,17 @@
 function toTop() {
   window.scrollTo({
     top: 0,
-    behavior: "smooth",
-  });
+    behavior: 'smooth',
+  })
 }
 
-const { y: scroll } = useWindowScroll();
+const { y: scroll } = useWindowScroll()
 </script>
 
 <template>
   <header class="header z-40">
     <RouterLink
-      class="w-6 h-6 sm:w-8 sm:h-8 absolute xl:fixed m-8 sm:m-6 select-none outline-none"
+      class="absolute m-8 h-6 w-6 select-none outline-none xl:fixed sm:m-6 sm:h-8 sm:w-8"
       to="/"
       focusable="false"
     >
@@ -20,18 +20,8 @@ const { y: scroll } = useWindowScroll();
     </RouterLink>
     <button
       title="Scroll to top"
-      fixed
-      right-3
-      bottom-3
-      w-10
-      h-10
-      hover:op100
-      rounded-full
-      hover-bg-hex-8883
-      transition
-      duration-300
-      z-100
-      print:hidden
+
+      fixed bottom-3 right-3 z-100 h-10 w-10 rounded-full transition duration-300 print:hidden hover-bg-hex-8883 hover:op100
       :class="scroll > 300 ? 'op30' : 'op0! pointer-events-none'"
       @click="toTop()"
     >

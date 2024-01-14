@@ -22,9 +22,9 @@ category:
 **如果优惠券减 1 操作失败了会直接抛出错误，而不会提交订单**。以下是一个简单事例
 
 ```js
-router.get("/test", async (req, res) => {
-  let session = await mongoose.startSession();
-  session.startTransaction();
+router.get('/test', async (req, res) => {
+  const session = await mongoose.startSession()
+  session.startTransaction()
   try {
     await user.findByIdAndUpdate(
       req.userId,
@@ -38,20 +38,22 @@ router.get("/test", async (req, res) => {
       {
         session,
       }
-    );
+    )
     await order.findByIdAndUpdate(
       req.body._id,
-      { status: "SUCCESS" },
+      { status: 'SUCCESS' },
       { session }
-    );
-    await session.commitTransaction();
-    res.sendStatus(200);
-  } catch (error) {
-    res.status(500).send(error);
-  } finally {
-    session.endSession();
+    )
+    await session.commitTransaction()
+    res.sendStatus(200)
   }
-});
+  catch (error) {
+    res.status(500).send(error)
+  }
+  finally {
+    session.endSession()
+  }
+})
 ```
 
 ### Question
@@ -127,7 +129,7 @@ replication:
 5. 编写 docker-compose.yaml 文件
 
 ```yaml
-version: "3"
+version: '3'
 
 services:
   master:

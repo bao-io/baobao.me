@@ -19,30 +19,32 @@ category:
 
 ```js
 // ./index.js
-const express = require("express");
-const { createProxyMiddleware } = require("http-proxy-middleware");
-const { HttpsProxyAgent } = require("https-proxy-agent");
-const server = express();
-const router = express.Router();
+const express = require('express')
+const { createProxyMiddleware } = require('http-proxy-middleware')
+const { HttpsProxyAgent } = require('https-proxy-agent')
+const server = express()
+const router = express.Router()
 
-const createProxy = (path, target) => [
-  path,
-  createProxyMiddleware({
-    target,
-    changeOrigin: true,
-    pathRewrite: { [`^/proxy${path}`]: "" },
-    agent: new HttpsProxyAgent("http://localhost:7890"),
-  }),
-];
+function createProxy(path, target) {
+  return [
+    path,
+    createProxyMiddleware({
+      target,
+      changeOrigin: true,
+      pathRewrite: { [`^/proxy${path}`]: '' },
+      agent: new HttpsProxyAgent('http://localhost:7890'),
+    }),
+  ]
+}
 
-router.use(...createProxy("/openai", "https://api.openai.com"));
-router.use(...createProxy("/xxxxx", "https://xxxxx"));
+router.use(...createProxy('/openai', 'https://api.openai.com'))
+router.use(...createProxy('/xxxxx', 'https://xxxxx'))
 
-server.use("/proxy", router);
+server.use('/proxy', router)
 
 server.listen(9000, () => {
-  console.log(`http proxy service run on http://localhost:9000`);
-});
+  console.log(`http proxy service run on http://localhost:9000`)
+})
 ```
 
 ## 运行

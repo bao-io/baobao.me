@@ -89,7 +89,7 @@ secret: 123
 clash 也是支持**docker 部署**的，以下是一个 docker-compose.yaml 的配置文件，仅供参考...
 
 ```yaml
-version: "3"
+version: '3'
 services:
   clash:
     image: ghcr.io/dreamacro/clash

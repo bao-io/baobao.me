@@ -1,36 +1,39 @@
-import { defineConfig } from "vite";
-import Vue from "@vitejs/plugin-vue";
-import Markdown from "unplugin-vue-markdown/vite";
-import Components from "unplugin-vue-components/vite";
-import AutoImport from "unplugin-auto-import/vite";
-import Pages from "vite-plugin-pages";
-import UnoCSS from "unocss/vite";
-import { resolve } from "node:path";
-import fs from "fs-extra";
-import matter from "gray-matter";
-import MarkdownItShikiji from "markdown-it-shikiji";
+/* eslint-disable ts/ban-ts-comment */
+import { resolve } from 'node:path'
+import { defineConfig } from 'vite'
+import Vue from '@vitejs/plugin-vue'
+import Markdown from 'unplugin-vue-markdown/vite'
+import Components from 'unplugin-vue-components/vite'
+import AutoImport from 'unplugin-auto-import/vite'
+import Pages from 'vite-plugin-pages'
+import UnoCSS from 'unocss/vite'
+import fs from 'fs-extra'
+import matter from 'gray-matter'
+import MarkdownItShikiji from 'markdown-it-shikiji'
 import anchor from 'markdown-it-anchor'
 import LinkAttributes from 'markdown-it-link-attributes'
 import GitHubAlerts from 'markdown-it-github-alerts'
 import { rendererRich, transformerTwoSlash } from 'shikiji-twoslash'
-//@ts-ignore
-import markdownItRuby from "markdown-it-ruby";
-//@ts-ignore
+
+// @ts-expect-error
+import markdownItRuby from 'markdown-it-ruby'
+
+// @ts-expect-error
 import TOC from 'markdown-it-table-of-contents'
 import { slugify } from './scripts/slugify'
 
 export default defineConfig({
   optimizeDeps: {
     include: [
-      "vue",
-      "vue-router",
-      "@vueuse/core",
-      "dayjs",
-      "dayjs/plugin/localizedFormat",
+      'vue',
+      'vue-router',
+      '@vueuse/core',
+      'dayjs',
+      'dayjs/plugin/localizedFormat',
     ],
   },
   resolve: {
-    alias: [{ find: "~/", replacement: `${resolve(__dirname, "src")}/` }],
+    alias: [{ find: '~/', replacement: `${resolve(__dirname, 'src')}/` }],
   },
   plugins: [
     UnoCSS(),
@@ -42,31 +45,31 @@ export default defineConfig({
       },
     }),
     Markdown({
-      wrapperComponent: "WrapperPost",
-      wrapperClasses: "prose m-auto slide-enter-content",
+      wrapperComponent: 'WrapperPost',
+      wrapperClasses: 'prose m-auto slide-enter-content',
       headEnabled: true,
       exportFrontmatter: false,
       exposeFrontmatter: false,
       exposeExcerpt: false,
       markdownItOptions: {
-        quotes: "\"\"''",
+        quotes: '""\'\'',
       },
       async markdownItSetup(md) {
         md.use(
           await MarkdownItShikiji({
             themes: {
-              dark: "vitesse-dark",
-              light: "vitesse-light",
+              dark: 'vitesse-dark',
+              light: 'vitesse-light',
             },
             defaultColor: false,
-            cssVariablePrefix: "--s-",
+            cssVariablePrefix: '--s-',
             transformers: [
               transformerTwoSlash({
                 explicitTrigger: true,
                 renderer: rendererRich(),
               }),
             ],
-          })
+          }),
         )
         md.use(anchor, {
           slugify,
@@ -90,30 +93,30 @@ export default defineConfig({
           containerHeaderHtml: '<div class="table-of-contents-anchor"><div class="i-ri-menu-2-fill" /></div>',
         })
         md.use(markdownItRuby)
-        md.use(GitHubAlerts);
+        md.use(GitHubAlerts)
       },
     }),
     AutoImport({
       dts: true,
-      imports: ["vue", "vue-router", "@vueuse/core"],
+      imports: ['vue', 'vue-router', '@vueuse/core'],
     }),
     Pages({
-      extensions: ["vue", "md"],
-      dirs: "pages",
+      extensions: ['vue', 'md'],
+      dirs: 'pages',
       extendRoute(route) {
-        const path = resolve(__dirname, route.component.slice(1));
+        const path = resolve(__dirname, route.component.slice(1))
 
-        if (path.endsWith(".md")) {
-          const md = fs.readFileSync(path, "utf-8");
-          const { data } = matter(md);
-          route.meta = Object.assign(route.meta || {}, { frontmatter: data });
+        if (path.endsWith('.md')) {
+          const md = fs.readFileSync(path, 'utf-8')
+          const { data } = matter(md)
+          route.meta = Object.assign(route.meta || {}, { frontmatter: data })
         }
 
-        return route;
+        return route
       },
     }),
     Components({
-      extensions: ["vue", "md"],
+      extensions: ['vue', 'md'],
       dts: true,
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
       directoryAsNamespace: true,
@@ -122,12 +125,13 @@ export default defineConfig({
   build: {
     rollupOptions: {
       onwarn(warning, next) {
-        if (warning.code !== "UNUSED_EXTERNAL_IMPORT") next(warning);
+        if (warning.code !== 'UNUSED_EXTERNAL_IMPORT')
+          next(warning)
       },
     },
   },
   ssgOptions: {
-    formatting: "minify",
-    format: "cjs",
+    formatting: 'minify',
+    format: 'cjs',
   },
-});
+})

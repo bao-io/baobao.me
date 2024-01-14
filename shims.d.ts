@@ -1,6 +1,7 @@
-import "vue-router";
-declare module "vue-router" {
+import 'vue-router'
+
+declare module 'vue-router' {
   interface RouteMeta {
-    frontmatter: Post;
+    frontmatter: Post
   }
 }
